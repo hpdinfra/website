@@ -1908,6 +1908,12 @@ footer{
   </div>
 </section>
 
+
+
+
+
+
+
 <!-- CONTACT -->
 <section class="contact" id="contact">
   <div class="contact-header">
@@ -2075,17 +2081,20 @@ form.addEventListener("submit", async (e) => {
       }
     );
 
-    if(response.ok){
+    const result = await response.text();
 
-      button.innerText = "Message Sent ✓";
+console.log(result);
 
-      form.reset();
+  if(response.ok){
 
-    }else{
+    button.innerText = "Message Sent ✓";
 
-      button.innerText = "Failed. Try Again";
+  }else{
 
-    }
+    console.error(result);
+
+    button.innerText = "Failed. Try Again";
+  }
 
   }catch(err){
 
